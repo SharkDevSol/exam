@@ -3,7 +3,7 @@ import api, { getErrorMessage } from '../../services/api';
 import { Button } from '../../components';
 import styles from './StudentBulkImport.module.css';
 
-export default function StudentBulkImport() {
+export default function StudentBulkImport({ onImportSuccess }: { onImportSuccess?: () => void }) {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
@@ -67,6 +67,11 @@ export default function StudentBulkImport() {
       // Reset file input
       const fileInput = document.getElementById('file-input') as HTMLInputElement;
       if (fileInput) fileInput.value = '';
+      
+      // Call the callback to refresh the students list
+      if (onImportSuccess) {
+        onImportSuccess();
+      }
     } catch (err) {
       setError(getErrorMessage(err));
     } finally {

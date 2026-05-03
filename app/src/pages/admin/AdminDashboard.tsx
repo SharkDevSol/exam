@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSession } from '../../hooks';
 import { Button } from '../../components';
 import SubjectManagement from './SubjectManagement';
-import StudentBulkImport from './StudentBulkImport';
+import StudentManagement from './StudentManagement';
 import ResultsDashboard from './ResultsDashboard';
 import ExamPasswordView from './ExamPasswordView';
 import styles from './AdminDashboard.module.css';
@@ -61,7 +61,7 @@ export default function AdminDashboard() {
 
         <main className={styles.main}>
           {activeTab === 'subjects' && <SubjectManagement />}
-          {activeTab === 'students' && <StudentBulkImport />}
+          {activeTab === 'students' && <StudentManagement />}
           {activeTab === 'results' && <ResultsDashboard />}
           {activeTab === 'passwords' && <ExamPasswordView />}
         </main>
