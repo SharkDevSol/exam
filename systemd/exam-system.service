@@ -1,0 +1,40 @@
+# Systemd service file for Web Exam System
+# Alternative to PM2 for process management
+# 
+# Installation:
+# sudo cp systemd/exam-system.service /etc/systemd/system/
+# sudo systemctl daemon-reload
+# sudo systemctl enable exam-system
+# sudo systemctl start exam-system
+
+[Unit]
+Description=Web Exam System API
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/exam-system/api
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/exam-system/api/.env.production
+ExecStart=/usr/bin/node /var/www/exam-system/api/dist/server.js
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/www/exam-system/logs/api-out.log
+StandardError=append:/var/www/exam-system/logs/api-error.log
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/exam-system/logs
+
+# Resource limits
+LimitNOFILE=65536
+MemoryLimit=512M
+
+[Install]
+WantedBy=multi-user.target

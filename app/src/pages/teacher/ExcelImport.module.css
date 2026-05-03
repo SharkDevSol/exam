@@ -1,0 +1,110 @@
+.container {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0 0 0.5rem 0;
+}
+
+.description {
+  color: #718096;
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+}
+
+.divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 2rem 0;
+}
+
+.error {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.uploadArea {
+  margin-bottom: 1rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileLabel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 2px dashed #cbd5e0;
+  border-radius: 8px;
+  background: #f7fafc;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fileLabel:hover {
+  border-color: #667eea;
+  background: #edf2f7;
+}
+
+.fileIcon {
+  font-size: 2rem;
+}
+
+.fileName {
+  color: #718096;
+  font-weight: 500;
+}
+
+.instructions {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f7fafc;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.instructionsHeading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0 0 1rem 0;
+}
+
+.instructionsList {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #718096;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.instructionsList li {
+  margin-bottom: 0.5rem;
+}
+
+.instructionsList ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.instructionsList strong {
+  color: #1a202c;
+  font-weight: 600;
+}

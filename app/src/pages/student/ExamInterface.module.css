@@ -1,0 +1,166 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.loadingContainer,
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1rem;
+}
+
+.error {
+  background-color: #fee;
+  color: #c33;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.mainContent {
+  display: flex;
+  flex: 1;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 350px;
+  flex-shrink: 0;
+}
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.timerSection {
+  display: flex;
+  justify-content: center;
+}
+
+.overviewSection {
+  flex: 1;
+  min-height: 0;
+}
+
+.submitSection {
+  padding-top: 1rem;
+}
+
+/* Modal styles */
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.warningText {
+  color: #d32f2f;
+  font-weight: 600;
+  margin: 0;
+}
+
+.confirmText {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.unansweredList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.unansweredNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 0.5rem;
+  background: white;
+  border: 2px solid #ff9800;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #f57c00;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .mainContent {
+    flex-direction: column;
+  }
+
+  .leftPanel {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .timerSection {
+    flex: 0 0 auto;
+  }
+
+  .overviewSection {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .submitSection {
+    flex: 0 0 auto;
+    min-width: 200px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .leftPanel {
+    flex-direction: column;
+  }
+
+  .overviewSection {
+    min-width: 0;
+  }
+
+  .modalActions {
+    flex-direction: column-reverse;
+  }
+
+  .modalActions button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "web-exam-system",
+  "version": "1.0.0",
+  "description": "Web-based examination system",
+  "private": true,
+  "workspaces": ["api", "app"],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:app\"",
+    "dev:api": "npm run dev --workspace=api",
+    "dev:app": "npm run dev --workspace=app",
+    "build": "npm run build --workspace=api && npm run build --workspace=app",
+    "build:prod": "NODE_ENV=production npm run build",
+    "test": "npm run test --workspaces",
+    "start:prod": "NODE_ENV=production npm run start --workspace=api"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.1.1"
+  }
+}

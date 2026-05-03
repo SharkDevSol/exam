@@ -1,0 +1,102 @@
+.container {
+  max-width: 1200px;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 0.5rem 0;
+}
+
+.description {
+  color: #718096;
+  margin: 0 0 2rem 0;
+  font-size: 0.95rem;
+}
+
+.form {
+  background-color: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.formRow {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.formRow > div {
+  flex: 1;
+}
+
+.formRow > button {
+  flex-shrink: 0;
+}
+
+.error {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.tableSection {
+  margin-top: 2rem;
+}
+
+.subheading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 1rem 0;
+}
+
+.emptyState {
+  text-align: center;
+  color: #a0aec0;
+  padding: 3rem;
+  font-size: 0.95rem;
+}
+
+.assignmentInfo {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.assignmentCard {
+  background-color: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.assignmentCard p {
+  margin: 0.5rem 0;
+  color: #4a5568;
+}
+
+.assignmentCard strong {
+  color: #2d3748;
+}
+
+.noAssignment {
+  color: #a0aec0;
+  font-style: italic;
+}

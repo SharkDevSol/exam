@@ -1,0 +1,370 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.error {
+  background-color: #fee;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+}
+
+.emptyState p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Total Score Card */
+.totalScoreCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.totalScoreLabel {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.totalScoreValue {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.totalScorePercentage {
+  font-size: 1.5rem;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+/* Subjects Section */
+.subjectsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.subjectGroup {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.subjectName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.resultCard {
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.resultCard:hover {
+  border-color: #2196f3;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+  transform: translateY(-2px);
+}
+
+.resultScore {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.score {
+  color: #2196f3;
+}
+
+.separator {
+  color: #999;
+  font-weight: 400;
+}
+
+.total {
+  color: #666;
+  font-size: 1.5rem;
+}
+
+.resultPercentage {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4caf50;
+}
+
+.resultDate {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Detailed Results View */
+.scoreCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.scoreLabel {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.scoreValue {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.scorePercentage {
+  font-size: 1.5rem;
+  font-weight: 500;
+  opacity: 0.95;
+  margin-bottom: 0.5rem;
+}
+
+.completedDate {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Questions Section */
+.questionsSection {
+  margin-top: 2rem;
+}
+
+.questionsSection h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+.questionCard {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.questionCard.correct {
+  border-color: #4caf50;
+  background-color: #f1f8f4;
+}
+
+.questionCard.incorrect {
+  border-color: #f44336;
+  background-color: #fef5f5;
+}
+
+.questionCard.unanswered {
+  border-color: #ff9800;
+  background-color: #fff8f0;
+}
+
+.questionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.questionNumber {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background-color: #ff9800;
+  color: white;
+}
+
+.correctBadge {
+  background-color: #4caf50;
+}
+
+.incorrectBadge {
+  background-color: #f44336;
+}
+
+.questionText {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.optionLabel {
+  font-weight: 600;
+  color: #666;
+  min-width: 1.5rem;
+}
+
+.optionText {
+  flex: 1;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.selectedCorrect {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+.selectedIncorrect {
+  border-color: #f44336;
+  background-color: #ffebee;
+}
+
+.correctOption {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+.answerSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.yourAnswer {
+  color: #f44336;
+}
+
+.correctAnswerLabel {
+  color: #4caf50;
+}
+
+.answerSummary strong {
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .totalScoreCard,
+  .scoreCard {
+    padding: 1.5rem;
+  }
+
+  .totalScoreValue,
+  .scoreValue {
+    font-size: 2.5rem;
+  }
+
+  .totalScorePercentage,
+  .scorePercentage {
+    font-size: 1.25rem;
+  }
+
+  .resultsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .questionCard {
+    padding: 1rem;
+  }
+
+  .questionText {
+    font-size: 1rem;
+  }
+
+  .option {
+    padding: 0.5rem;
+  }
+}

@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: white;
+  border-top: 2px solid #e0e0e0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.leftSection,
+.rightSection {
+  flex: 1;
+}
+
+.leftSection {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.rightSection {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.centerSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.flagButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.flagButton:hover {
+  border-color: #ff9800;
+  background: #fff8e1;
+  color: #f57c00;
+}
+
+.flagButton.flagged {
+  border-color: #ff9800;
+  background: #ff9800;
+  color: white;
+}
+
+.flagButton.flagged:hover {
+  background: #f57c00;
+  border-color: #f57c00;
+}
+
+.flagIcon {
+  font-size: 1.2rem;
+}
+
+.flagText {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .flagButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .flagText {
+    display: none;
+  }
+
+  .flagIcon {
+    font-size: 1.5rem;
+  }
+}

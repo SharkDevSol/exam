@@ -1,0 +1,40 @@
+# Node modules
+node_modules
+api/node_modules
+app/node_modules
+
+# Build outputs
+api/dist
+app/dist
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Testing
+coverage
+.nyc_output
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+!README.md
+
+# Misc
+.DS_Store
+.cache
