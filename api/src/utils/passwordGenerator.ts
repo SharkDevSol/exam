@@ -83,12 +83,12 @@ export interface StudentCredentials {
   password: string;
 }
 
-export function generateStudentCredentials(names: string[]): StudentCredentials[] {
-  const existingUsernames: string[] = [];
+export function generateStudentCredentials(names: string[], existingUsernames: string[] = []): StudentCredentials[] {
+  const usedUsernames = [...existingUsernames];
   
   return names.map(name => {
-    const username = generateUsername(name, existingUsernames);
-    existingUsernames.push(username);
+    const username = generateUsername(name, usedUsernames);
+    usedUsernames.push(username);
     
     return {
       name,

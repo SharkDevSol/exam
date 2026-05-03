@@ -95,8 +95,12 @@ export class AdminService {
       // Parse student names from Excel
       const names = parseStudentNames(fileBuffer);
       
-      // Generate credentials
-      const credentials = generateStudentCredentials(names);
+      // Get existing usernames from database to avoid duplicates
+      const existingResult = await client.query('SELECT username FROM students');
+      const existingUsernames = existingResult.rows.map(row => row.username);
+      
+      // Generate credentials with existing usernames check
+      const credentials = generateStudentCredentials(names, existingUsernames);
       
       // Insert students into database
       const batchId = `batch_${Date.now()}`;
