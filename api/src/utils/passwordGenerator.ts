@@ -36,23 +36,38 @@ export function generateStudentPassword(): string {
 
 /**
  * Generate a username from student name
- * Converts to lowercase, removes spaces, adds random suffix
+ * Creates short username from first name + last initial + random number
  */
 export function generateUsername(name: string, existingUsernames: string[] = []): string {
-  // Clean the name: lowercase, remove special characters, replace spaces with underscore
-  const baseName = name
+  // Split name into parts
+  const parts = name
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, '')
-    .replace(/\s+/g, '_')
-    .substring(0, 20); // Limit length
+    .split(/\s+/)
+    .filter(p => p.length > 0);
   
-  // Generate unique username by adding random suffix if needed
+  if (parts.length === 0) {
+    // Fallback for invalid names
+    const randomNum = crypto.randomInt(1000, 9999);
+    return `user${randomNum}`;
+  }
+  
+  // Create base: first name + last initial (if exists)
+  let baseName = parts[0];
+  if (parts.length > 1) {
+    baseName += parts[parts.length - 1].charAt(0);
+  }
+  
+  // Limit to 8 characters
+  baseName = baseName.substring(0, 8);
+  
+  // Add random 3-digit number to ensure uniqueness
   let username = baseName;
   let attempts = 0;
   
   while (existingUsernames.includes(username) && attempts < 100) {
-    const suffix = crypto.randomInt(100, 9999);
-    username = `${baseName}_${suffix}`;
+    const suffix = crypto.randomInt(100, 999);
+    username = `${baseName}${suffix}`;
     attempts++;
   }
   

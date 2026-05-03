@@ -3,6 +3,9 @@ import { hashPassword, verifyPassword } from '../utils/auth';
 import { generateStudentCredentials, StudentCredentials } from '../utils/passwordGenerator';
 import { parseStudentNames, generateCredentialsFile } from '../utils/excelProcessor';
 
+// Temporary storage for credentials (in production, use Redis or similar)
+const credentialsCache = new Map<string, StudentCredentials[]>();
+
 export class AdminService {
   /**
    * Authenticate admin user
@@ -108,6 +111,10 @@ export class AdminService {
       
       await client.query('COMMIT');
       
+      // Store credentials in cache for 10 minutes
+      credentialsCache.set(batchId, credentials);
+      setTimeout(() => credentialsCache.delete(batchId), 10 * 60 * 1000);
+      
       return {
         imported: credentials.length,
         batchId,
@@ -125,6 +132,14 @@ export class AdminService {
    * Get credentials file for a batch
    */
   async getCredentialsFile(batchId: string): Promise<Buffer> {
+    // Try to get from cache first
+    const cachedCredentials = credentialsCache.get(batchId);
+    
+    if (cachedCredentials) {
+      return generateCredentialsFile(cachedCredentials);
+    }
+    
+    // If not in cache, get student info from database (without passwords)
     const result = await pool.query(
       'SELECT name, username FROM students WHERE admission_number = $1 ORDER BY name',
       [batchId]
@@ -213,6 +228,36 @@ export class AdminService {
       password: row.password,
       isPublic: row.is_public,
       isFinished: row.is_finished,
+    }));
+  }
+  
+  /**
+   * Get all students
+   */
+  async getAllStudents(): Promise<Array<{
+    id: string;
+    name: string;
+    username: string;
+    admissionNumber: string | null;
+    createdAt: Date;
+  }>> {
+    const result = await pool.query(`
+      SELECT 
+        id,
+        name,
+        username,
+        admission_number,
+        created_at
+      FROM students
+      ORDER BY created_at DESC
+    `);
+    
+    return result.rows.map(row => ({
+      id: row.id,
+      name: row.name,
+      username: row.username,
+      admissionNumber: row.admission_number,
+      createdAt: row.created_at,
     }));
   }
 }

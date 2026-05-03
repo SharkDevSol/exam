@@ -71,4 +71,9 @@ router.get('/exams/passwords',
   adminController.getAllExamPasswords.bind(adminController)
 );
 
+router.get('/students',
+  requireAdmin,
+  adminController.getAllStudents.bind(adminController)
+);
+
 export default router;

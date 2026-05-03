@@ -177,6 +177,19 @@ export class AdminController {
       res.status(500).json({ error: 'Internal server error' });
     }
   }
+  
+  /**
+   * GET /api/admin/students
+   */
+  async getAllStudents(req: Request, res: Response) {
+    try {
+      const students = await adminService.getAllStudents();
+      res.json(students);
+    } catch (error) {
+      console.error('Get students error:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
 }
 
 export default new AdminController();
