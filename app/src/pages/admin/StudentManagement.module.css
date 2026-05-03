@@ -34,6 +34,13 @@
   margin: 0;
 }
 
+.actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .searchInput {
   padding: 0.5rem 1rem;
   border: 1px solid #d1d5db;

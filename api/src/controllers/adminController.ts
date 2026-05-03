@@ -190,6 +190,22 @@ export class AdminController {
       res.status(500).json({ error: 'Internal server error' });
     }
   }
+  
+  /**
+   * GET /api/admin/students/export
+   */
+  async exportStudents(req: Request, res: Response) {
+    try {
+      const buffer = await adminService.exportStudentsToExcel();
+      
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      res.setHeader('Content-Disposition', `attachment; filename=students_export_${Date.now()}.xlsx`);
+      res.send(buffer);
+    } catch (error) {
+      console.error('Export students error:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
 }
 
 export default new AdminController();

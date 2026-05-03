@@ -264,6 +264,23 @@ export class AdminService {
       createdAt: row.created_at,
     }));
   }
+  
+  /**
+   * Export all students to Excel
+   */
+  async exportStudentsToExcel(): Promise<Buffer> {
+    const students = await this.getAllStudents();
+    
+    const exportData = students.map((student, index) => ({
+      '#': index + 1,
+      'Name': student.name,
+      'Username': student.username,
+      'Batch ID': student.admissionNumber || 'N/A',
+      'Imported Date': new Date(student.createdAt).toLocaleDateString(),
+    }));
+    
+    return generateCredentialsFile(exportData as any);
+  }
 }
 
 export default new AdminService();

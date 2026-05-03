@@ -76,4 +76,9 @@ router.get('/students',
   adminController.getAllStudents.bind(adminController)
 );
 
+router.get('/students/export',
+  requireAdmin,
+  adminController.exportStudents.bind(adminController)
+);
+
 export default router;

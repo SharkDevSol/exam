@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import api, { getErrorMessage } from '../../services/api';
+import { Button } from '../../components';
 import StudentBulkImport from './StudentBulkImport';
 import styles from './StudentManagement.module.css';
 
@@ -16,6 +17,7 @@ export default function StudentManagement() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [exporting, setExporting] = useState(false);
 
   const fetchStudents = async () => {
     try {
@@ -34,6 +36,29 @@ export default function StudentManagement() {
     fetchStudents();
   }, []);
 
+  const handleExport = async () => {
+    try {
+      setExporting(true);
+      const response = await api.get('/admin/students/export', {
+        responseType: 'blob',
+      });
+
+      // Create download link
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `students_export_${Date.now()}.xlsx`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      setError(getErrorMessage(err));
+    } finally {
+      setExporting(false);
+    }
+  };
+
   const filteredStudents = students.filter(student =>
     student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     student.username.toLowerCase().includes(searchTerm.toLowerCase())
@@ -50,13 +75,18 @@ export default function StudentManagement() {
       <section className={styles.listSection}>
         <div className={styles.listHeader}>
           <h2 className={styles.heading}>All Students ({students.length})</h2>
-          <input
-            type="text"
-            placeholder="Search by name or username..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className={styles.searchInput}
-          />
+          <div className={styles.actions}>
+            <input
+              type="text"
+              placeholder="Search by name or username..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={styles.searchInput}
+            />
+            <Button onClick={handleExport} disabled={students.length === 0 || exporting}>
+              {exporting ? 'Exporting...' : 'Export to Excel'}
+            </Button>
+          </div>
         </div>
 
         {error && <div className={styles.error}>{error}</div>}
